@@ -20,7 +20,6 @@ SENSORS = [
     ("temperature_difference", "Temperaturforskel fremløb/retur", "°C", "temperature", "measurement"),
     ("thermostat_active_count", "Aktive termostater", None, None, None),
     ("hp_heater_active", "Intern elpatron aktiv", None, None, None),
-    ("dhw_heater_active", "VVB-elpatron aktiv", None, None, None),
     ("weather_sensitive_electricity_today", "Vejrafhængigt elforbrug estimeret i dag", "kWh/døgn", None, "measurement"),
     ("model_slope", "Modelkoefficient", "kWh pr. graddøgn", None, "measurement"),
     ("model_intercept", "Modelgrundlast", "kWh/døgn", None, "measurement"),
@@ -75,7 +74,7 @@ class EnergyOptimizerSensor(CoordinatorEntity, SensorEntity):
         if self.key == "weather_sensitive_electricity_today":
             return {
                 "explanation": "Eksperimentelt estimat fra dagligt samlet elforbrug og graddøgn.",
-                "warning": "Kan indeholde varmtvandsproduktion og elpatronforbrug; er ikke målt varmeenergi.",
+                "warning": "Det samlede elforbrug kan også indeholde varmtvandsproduktion og elpatronforbrug; det er ikke målt varmeenergi.",
                 "model_days": self.coordinator.data.get("model_days"),
                 "model_status": self.coordinator.data.get("model_status"),
             }
