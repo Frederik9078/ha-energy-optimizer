@@ -55,6 +55,7 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
         self.hass = hass
         self.entry = entry
         self.config = {**entry.data, **entry.options}
+        self.config.pop("hp_heater_status_entity", None)
         self.store = Store(hass, STORAGE_VERSION, f"{STORAGE_KEY}_{entry.entry_id}")
         self.history = {
             "days": [],
@@ -88,17 +89,13 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
 
         supply = _float_state(self.hass, self.config.get("supply_entity"))
         return_temp = _float_state(self.hass, self.config.get("return_entity"))
-        hp_heater = self._read_boolean(self.config.get("hp_heater_status_entity"))
 
-        # Close the previous local day before assigning the new energy interval.
         local_date = now.date().isoformat()
         old_date = self.history.get("last_date")
         if old_date and old_date != local_date:
             self._close_day(old_date)
         self.history["last_date"] = local_date
 
-        # Accumulate energy from a cumulative meter. Ignore counter resets and
-        # implausibly large jumps rather than adding misleading daily energy.
         previous = self.history.get("last_energy_kwh")
         if energy is not None and previous is not None:
             delta = energy - previous
@@ -145,7 +142,6 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
             "thermostat_active_count": self._active_count(
                 self.config.get("thermostat_entities", [])
             ),
-            "hp_heater_active": hp_heater,
             "weather_sensitive_electricity_today": estimated_weather_kwh,
             "model_slope": model["slope"] if model else None,
             "model_intercept": model["intercept"] if model else None,
@@ -156,19 +152,6 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
 
         await self.store.async_save(self.history)
         return data
-
-    def _read_boolean(self, entity_id):
-        if not entity_id:
-            return None
-        state = self.hass.states.get(entity_id)
-        if state is None:
-            return None
-        value = state.state.lower()
-        if value in ("on", "true", "1", "heat", "heating"):
-            return True
-        if value in ("off", "false", "0", "idle"):
-            return False
-        return None
 
     def _active_count(self, entity_ids):
         if not entity_ids:
