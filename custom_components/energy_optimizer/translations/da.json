@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Energy Optimizer",
+        "title": "ThermoPilot",
         "description": "Vælg målere og temperaturfølere til varmepumpen og bygningen.",
         "data": {
           "energy_entity": "Varmepumpe – samlet elforbrug (energimåler)",
@@ -25,13 +25,13 @@
       }
     },
     "abort": {
-      "already_configured": "Energy Optimizer er allerede konfigureret."
+      "already_configured": "ThermoPilot er allerede konfigureret."
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "Energy Optimizer – indstillinger",
+        "title": "ThermoPilot – indstillinger",
         "description": "Vælg målere og temperaturfølere til varmepumpen og bygningen.",
         "data": {
           "energy_entity": "Varmepumpe – samlet elforbrug (energimåler)",
