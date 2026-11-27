@@ -36,6 +36,8 @@ def _clean_input(user_input):
                 for entity_id in (value or [])
                 if isinstance(entity_id, str) and entity_id
             ]
+    # Ignore the retired option if it remains in an older config entry.
+    cleaned.pop("hp_heater_status_entity", None)
     return cleaned
 
 
@@ -67,7 +69,6 @@ class EnergyOptimizerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 multiple=True,
                 domain=["sensor", "binary_sensor", "switch", "climate"],
             ),
-            vol.Optional("hp_heater_status_entity"): _entity_selector(),
             vol.Optional("degree_base", default=17.0): vol.All(
                 vol.Coerce(float), vol.Range(min=10, max=25)
             ),
@@ -94,7 +95,6 @@ class EnergyOptimizerOptionsFlow(config_entries.OptionsFlow):
         }
         _optional_entity_field(schema_fields, "supply_entity", current)
         _optional_entity_field(schema_fields, "return_entity", current)
-        _optional_entity_field(schema_fields, "hp_heater_status_entity", current)
 
         room_entities = [
             entity_id
