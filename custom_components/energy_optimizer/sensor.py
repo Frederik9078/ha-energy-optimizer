@@ -19,7 +19,6 @@ SENSORS = [
     ("return_temperature", "Returtemperatur", "°C", "temperature", "measurement"),
     ("temperature_difference", "Temperaturforskel fremløb/retur", "°C", "temperature", "measurement"),
     ("thermostat_active_count", "Aktive termostater", None, None, None),
-    ("hp_heater_active", "Intern elpatron aktiv", None, None, None),
     ("weather_sensitive_electricity_today", "Vejrafhængigt elforbrug estimeret i dag", "kWh/døgn", None, "measurement"),
     ("model_slope", "Modelkoefficient", "kWh pr. graddøgn", None, "measurement"),
     ("model_intercept", "Modelgrundlast", "kWh/døgn", None, "measurement"),
