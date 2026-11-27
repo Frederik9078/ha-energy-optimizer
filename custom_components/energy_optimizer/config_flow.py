@@ -7,11 +7,11 @@ from homeassistant.helpers import selector
 from .const import DOMAIN
 
 
-def _entity_selector(multiple=False):
+def _entity_selector(multiple=False, domain="sensor"):
     return selector.EntitySelector(
         selector.EntitySelectorConfig(
             multiple=multiple,
-            domain="sensor",
+            domain=domain,
         )
     )
 
@@ -31,7 +31,10 @@ class EnergyOptimizerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             vol.Optional("supply_entity"): _entity_selector(),
             vol.Optional("return_entity"): _entity_selector(),
             vol.Optional("room_entities", default=[]): _entity_selector(multiple=True),
-            vol.Optional("thermostat_entities", default=[]): _entity_selector(multiple=True),
+            vol.Optional("thermostat_entities", default=[]): _entity_selector(
+                multiple=True,
+                domain=["sensor", "binary_sensor", "switch", "climate"],
+            ),
             vol.Optional("hp_heater_status_entity"): _entity_selector(),
             vol.Optional("degree_base", default=17.0): vol.All(
                 vol.Coerce(float), vol.Range(min=10, max=25)
@@ -58,7 +61,10 @@ class EnergyOptimizerOptionsFlow(config_entries.OptionsFlow):
             vol.Optional("supply_entity", default=current.get("supply_entity")): _entity_selector(),
             vol.Optional("return_entity", default=current.get("return_entity")): _entity_selector(),
             vol.Optional("room_entities", default=current.get("room_entities", [])): _entity_selector(multiple=True),
-            vol.Optional("thermostat_entities", default=current.get("thermostat_entities", [])): _entity_selector(multiple=True),
+            vol.Optional("thermostat_entities", default=current.get("thermostat_entities", [])): _entity_selector(
+                multiple=True,
+                domain=["sensor", "binary_sensor", "switch", "climate"],
+            ),
             vol.Optional("hp_heater_status_entity", default=current.get("hp_heater_status_entity")): _entity_selector(),
             vol.Optional("degree_base", default=current.get("degree_base", 17.0)): vol.All(
                 vol.Coerce(float), vol.Range(min=10, max=25)
