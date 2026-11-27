@@ -1,4 +1,4 @@
-# Energy Optimizer
+# ThermoPilot
 
 Custom Home Assistant-integration til indsamling af varmepumpe- og bygningsdata og udvikling af en eksperimentel varmebehovsmodel.
 
@@ -8,10 +8,10 @@ Custom Home Assistant-integration til indsamling af varmepumpe- og bygningsdata 
 
 1. Åbn **HACS → Integrationer** i Home Assistant.
 2. Åbn menuen med de tre prikker, og vælg **Custom repositories**.
-3. Indsæt `https://github.com/Frederik9078/ha-energy-optimizer` og vælg kategorien **Integration**.
-4. Find **Energy Optimizer**, og vælg Download.
+3. Indsæt `https://github.com/Frederik9078/ha-thermopilot` og vælg kategorien **Integration**.
+4. Find **ThermoPilot**, og vælg Download.
 5. Genstart Home Assistant.
-6. Tilføj **Energy Optimizer** under **Indstillinger → Enheder og tjenester → Tilføj integration**.
+6. Tilføj **ThermoPilot** under **Indstillinger → Enheder og tjenester → Tilføj integration**.
 
 ## Funktioner i version 0.1.6
 
@@ -56,4 +56,4 @@ Nye versioner udgives som GitHub Releases med versions-tags, f.eks. `v0.1.6`. N�
 
 ## Projekt
 
-[GitHub repository](https://github.com/Frederik9078/ha-energy-optimizer)
+[GitHub repository](https://github.com/Frederik9078/ha-thermopilot)
