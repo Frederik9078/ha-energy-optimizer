@@ -33,7 +33,6 @@ class EnergyOptimizerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             vol.Optional("room_entities", default=[]): _entity_selector(multiple=True),
             vol.Optional("thermostat_entities", default=[]): _entity_selector(multiple=True),
             vol.Optional("hp_heater_status_entity"): _entity_selector(),
-            vol.Optional("dhw_heater_status_entity"): _entity_selector(),
             vol.Optional("degree_base", default=17.0): vol.All(
                 vol.Coerce(float), vol.Range(min=10, max=25)
             ),
@@ -61,7 +60,6 @@ class EnergyOptimizerOptionsFlow(config_entries.OptionsFlow):
             vol.Optional("room_entities", default=current.get("room_entities", [])): _entity_selector(multiple=True),
             vol.Optional("thermostat_entities", default=current.get("thermostat_entities", [])): _entity_selector(multiple=True),
             vol.Optional("hp_heater_status_entity", default=current.get("hp_heater_status_entity")): _entity_selector(),
-            vol.Optional("dhw_heater_status_entity", default=current.get("dhw_heater_status_entity")): _entity_selector(),
             vol.Optional("degree_base", default=current.get("degree_base", 17.0)): vol.All(
                 vol.Coerce(float), vol.Range(min=10, max=25)
             ),
