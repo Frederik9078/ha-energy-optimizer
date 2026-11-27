@@ -3,11 +3,55 @@
     "step": {
       "user": {
         "title": "Energy Optimizer",
-        "description": "Vælg de sensorer, som prototypen skal bruge."
+        "description": "Vælg målere og temperaturfølere til varmepumpen og bygningen.",
+        "data": {
+          "energy_entity": "Varmepumpe – samlet elforbrug (energimåler)",
+          "outdoor_entity": "Bygning – udetemperatur (°C)",
+          "supply_entity": "Varmesystem – fremløbstemperatur (°C)",
+          "return_entity": "Varmesystem – returtemperatur (°C)",
+          "room_entities": "Bygning – rumtemperaturer (°C)",
+          "thermostat_entities": "Varmesystem – telestater/termostater (status)",
+          "degree_base": "Bygning – beregningsmæssig udetemperatur (°C)"
+        },
+        "data_description": {
+          "energy_entity": "Vælg en kumulativ energimåler for varmepumpens samlede elforbrug. Enheden kan være Wh, kWh eller MWh.",
+          "outdoor_entity": "Sensoren, der måler temperaturen udenfor.",
+          "supply_entity": "Sensor på fremløbet fra varmepumpen. Valgfrit.",
+          "return_entity": "Sensor på returen til varmepumpen. Valgfrit.",
+          "room_entities": "Vælg de rumtemperaturfølere, der skal indgå i gennemsnittet. Valgfrit.",
+          "thermostat_entities": "Vælg telestater eller termostater, som skal tælles som aktive, når deres status er aktiv. Valgfrit.",
+          "degree_base": "Temperatur, som modellen bruger som reference for beregning af graddøgn. Standard er 17 °C."
+        }
       }
     },
     "abort": {
       "already_configured": "Energy Optimizer er allerede konfigureret."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Energy Optimizer – indstillinger",
+        "description": "Vælg målere og temperaturfølere til varmepumpen og bygningen.",
+        "data": {
+          "energy_entity": "Varmepumpe – samlet elforbrug (energimåler)",
+          "outdoor_entity": "Bygning – udetemperatur (°C)",
+          "supply_entity": "Varmesystem – fremløbstemperatur (°C)",
+          "return_entity": "Varmesystem – returtemperatur (°C)",
+          "room_entities": "Bygning – rumtemperaturer (°C)",
+          "thermostat_entities": "Varmesystem – telestater/termostater (status)",
+          "degree_base": "Bygning – beregningsmæssig udetemperatur (°C)"
+        },
+        "data_description": {
+          "energy_entity": "Kumulativ måler for varmepumpens samlede elforbrug (Wh, kWh eller MWh).",
+          "outdoor_entity": "Sensor, der måler temperaturen udenfor.",
+          "supply_entity": "Sensor på fremløbet fra varmepumpen. Valgfrit.",
+          "return_entity": "Sensor på returen til varmepumpen. Valgfrit.",
+          "room_entities": "Rumtemperaturfølere, der skal indgå i gennemsnittet. Valgfrit.",
+          "thermostat_entities": "Telestater eller termostater, der skal tælles som aktive. Valgfrit.",
+          "degree_base": "Referencetemperatur til modellens graddøgnsberegning. Standard er 17 °C."
+        }
+      }
     }
   }
 }
