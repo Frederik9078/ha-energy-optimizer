@@ -3,11 +3,55 @@
     "step": {
       "user": {
         "title": "Energy Optimizer",
-        "description": "Select the sensors used by the heat-demand prototype."
+        "description": "Select the meters and temperature sensors for the heat pump and building.",
+        "data": {
+          "energy_entity": "Heat pump – total electricity consumption (energy meter)",
+          "outdoor_entity": "Building – outdoor temperature (°C)",
+          "supply_entity": "Heating system – flow temperature (°C)",
+          "return_entity": "Heating system – return temperature (°C)",
+          "room_entities": "Building – room temperatures (°C)",
+          "thermostat_entities": "Heating system – thermal actuators/thermostats (status)",
+          "degree_base": "Building – heating reference temperature (°C)"
+        },
+        "data_description": {
+          "energy_entity": "Select a cumulative energy meter for the heat pump's total electricity use. Unit can be Wh, kWh or MWh.",
+          "outdoor_entity": "Sensor measuring the outdoor temperature.",
+          "supply_entity": "Sensor on the flow from the heat pump. Optional.",
+          "return_entity": "Sensor on the return to the heat pump. Optional.",
+          "room_entities": "Select room temperature sensors to include in the average. Optional.",
+          "thermostat_entities": "Select thermal actuators or thermostats to count as active when their state is active. Optional.",
+          "degree_base": "Reference temperature used by the model to calculate heating degree days. Defaults to 17 °C."
+        }
       }
     },
     "abort": {
       "already_configured": "The Energy Optimizer is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Energy Optimizer – options",
+        "description": "Select the meters and temperature sensors for the heat pump and building.",
+        "data": {
+          "energy_entity": "Heat pump – total electricity consumption (energy meter)",
+          "outdoor_entity": "Building – outdoor temperature (°C)",
+          "supply_entity": "Heating system – flow temperature (°C)",
+          "return_entity": "Heating system – return temperature (°C)",
+          "room_entities": "Building – room temperatures (°C)",
+          "thermostat_entities": "Heating system – thermal actuators/thermostats (status)",
+          "degree_base": "Building – heating reference temperature (°C)"
+        },
+        "data_description": {
+          "energy_entity": "Cumulative meter for total heat pump electricity use (Wh, kWh or MWh).",
+          "outdoor_entity": "Sensor measuring outdoor temperature.",
+          "supply_entity": "Sensor on the flow from the heat pump. Optional.",
+          "return_entity": "Sensor on the return to the heat pump. Optional.",
+          "room_entities": "Room temperature sensors included in the average. Optional.",
+          "thermostat_entities": "Thermal actuators or thermostats counted as active. Optional.",
+          "degree_base": "Reference temperature for the model's heating degree day calculation. Defaults to 17 °C."
+        }
+      }
     }
   }
 }
