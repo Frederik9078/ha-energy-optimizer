@@ -89,7 +89,6 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
         supply = _float_state(self.hass, self.config.get("supply_entity"))
         return_temp = _float_state(self.hass, self.config.get("return_entity"))
         hp_heater = self._read_boolean(self.config.get("hp_heater_status_entity"))
-        dhw_heater = self._read_boolean(self.config.get("dhw_heater_status_entity"))
 
         # Close the previous local day before assigning the new energy interval.
         local_date = now.date().isoformat()
@@ -147,7 +146,6 @@ class EnergyOptimizerCoordinator(DataUpdateCoordinator):
                 self.config.get("thermostat_entities", [])
             ),
             "hp_heater_active": hp_heater,
-            "dhw_heater_active": dhw_heater,
             "weather_sensitive_electricity_today": estimated_weather_kwh,
             "model_slope": model["slope"] if model else None,
             "model_intercept": model["intercept"] if model else None,
