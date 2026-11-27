@@ -57,9 +57,9 @@ class EnergyOptimizerSensor(CoordinatorEntity, SensorEntity):
 
         self._attr_device_info = {
             "identifiers": {(DOMAIN, entry.entry_id)},
-            "name": "Energy Optimizer",
+            "name": "ThermoPilot",
             "manufacturer": "Custom",
-            "model": "Heat demand prototype",
+            "model": "ThermoPilot heating optimizer",
         }
 
     @property
