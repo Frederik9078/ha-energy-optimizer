@@ -1,7 +1,7 @@
 {
   "domain": "energy_optimizer",
   "name": "Energy Optimizer",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "documentation": "https://github.com/Frederik9078/ha-energy-optimizer",
   "issue_tracker": "https://github.com/Frederik9078/ha-energy-optimizer/issues",
   "requirements": [],
